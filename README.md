@@ -31,14 +31,16 @@ certbot certonly --preferred-challenges http-01 -d www.domain.com Saving debug l
 Using the "net/http" library to server on the desired port.
 
 ```go
-http.ListenAndServeTLS(":port", "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", nil)
+PORT := "8081"
+http.ListenAndServeTLS(":"+PORT, "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", nil)
 ```
 
 and (to use gin-gonic) :
 
 ```go
+PORT := "8081"
 router := gin.Default()
-http.ListenAndServeTLS(":port", "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", router)
+http.ListenAndServeTLS(":"+PORT, "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", router)
 ```
 
-<h4> Have Fun </h4>
+<h2> Have Fun </h2>
