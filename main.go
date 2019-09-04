@@ -1,10 +1,10 @@
 package main
 
-import {
+import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"log"
-}
+)
 
 func main() {
 	r := gin.Default()
@@ -13,7 +13,7 @@ func main() {
 			"message": "pong",
 		})
 	})
-	err := http.ListenAndServeTLS(":8081", "/etc/letsencrypt/live/vps.tonychouteau.fr/fullchain.pem", "/etc/letsencrypt/live/vps.tonychouteau.fr/privkey.pem", nil)
+	err := http.ListenAndServeTLS(":8081", "/etc/letsencrypt/live/www.domain.com/fullchain.pem", "/etc/letsencrypt/live/www.domain.com/privkey.pem", r)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
