@@ -21,7 +21,7 @@ func enableCors(w *http.ResponseWriter) {
 
 func main() {
 	http.HandleFunc("/hello", HelloServer)
-	err := http.ListenAndServeTLS(":8081", "cert.pem", "key.pem", nil)
+	err := http.ListenAndServeTLS(":8081", "/etc/letsencrypt/live/vps.tonychouteau.fr/fullchain.pem", "/etc/letsencrypt/live/vps.tonychouteau.fr/privkey.pem", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
